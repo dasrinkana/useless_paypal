@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,7 @@ import java.math.BigDecimal;
 public class PaymentMethods extends AppCompatActivity {
 
     Button btnPayNow;
+    Button payPalWeb;
     EditText edtAmout;
     public static final int PAYPAL_REQUEST_CODE = 7171;
     private static PayPalConfiguration config = new PayPalConfiguration()
@@ -59,7 +61,16 @@ public class PaymentMethods extends AppCompatActivity {
 
         btnPayNow = (Button)findViewById(R.id.btnPayNow);
         edtAmout = (EditText)findViewById(R.id.edtAmount);
+        payPalWeb = (Button)findViewById(R.id.paypalweb);
 
+
+        payPalWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                website("https://paypal.me/pools/c/8zjqMxeko5");
+            }
+
+        });
 
 
         btnPayNow.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +84,11 @@ public class PaymentMethods extends AppCompatActivity {
 
     }
 
+    private void website(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
+    }
     private void processPayment(){
         amount = edtAmout.getText().toString();
         PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(amount)),"USD",
