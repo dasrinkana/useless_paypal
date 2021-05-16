@@ -8,43 +8,69 @@
 
     <EditText
         android:id="@+id/edtAmount"
-        android:layout_width="233dp"
-        android:layout_height="47dp"
+        android:layout_width="259dp"
+        android:layout_height="52dp"
         android:fontFamily="@font/plaster"
         android:hint="Enter Amount"
         app:layout_constraintBottom_toTopOf="@+id/btnPayNow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.553" />
+        app:layout_constraintVertical_bias="0.707" />
 
     <Button
         android:id="@+id/btnPayNow"
-        android:layout_width="182dp"
-        android:layout_height="57dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/plaster"
         android:text="Pay Now"
-        android:textSize="16sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.654" />
+        app:layout_constraintVertical_bias="0.512" />
 
     <Button
         android:id="@+id/paypalweb"
-        android:layout_width="184dp"
-        android:layout_height="53dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/plaster"
         android:text="PayPal"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPayNow"
-        app:layout_constraintVertical_bias="0.122" />
+        app:layout_constraintVertical_bias="0.109" />
+
+    <Button
+        android:id="@+id/signout"
+        android:layout_width="95dp"
+        android:layout_height="72dp"
+        android:fontFamily="@font/plaster"
+        android:text="Sign Out"
+        app:layout_constraintBottom_toTopOf="@+id/edtAmount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.101" />
+
+    <Button
+        android:id="@+id/ticktaktoe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/plaster"
+        android:text="Tik Tak Toe"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paypalweb"
+        app:layout_constraintVertical_bias="0.315" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

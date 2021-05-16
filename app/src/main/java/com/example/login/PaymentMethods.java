@@ -1,7 +1,6 @@
 package com.example.login;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.login.Config.Config;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
@@ -27,15 +28,16 @@ import java.math.BigDecimal;
 
 public class PaymentMethods extends AppCompatActivity {
 
-    Button btnPayNow;
-    Button payPalWeb;
-    EditText edtAmout;
     public static final int PAYPAL_REQUEST_CODE = 7171;
     private static PayPalConfiguration config = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
             .clientId(Config.PAYPAL_CLIENT_ID);
 
-
+    Button btnPayNow;
+    Button payPalWeb;
+    EditText edtAmout;
+    Button signOut;
+    Button tiktaktoe;
     String amount ="";
 
     @Override
@@ -62,12 +64,21 @@ public class PaymentMethods extends AppCompatActivity {
         btnPayNow = (Button)findViewById(R.id.btnPayNow);
         edtAmout = (EditText)findViewById(R.id.edtAmount);
         payPalWeb = (Button)findViewById(R.id.paypalweb);
+        signOut = (Button)findViewById(R.id.signout);
+        tiktaktoe = (Button)findViewById(R.id.ticktaktoe);
 
 
         payPalWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 website("https://paypal.me/pools/c/8zjqMxeko5");
+            }
+
+        });
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                processSignOut();
             }
 
         });
@@ -81,7 +92,25 @@ public class PaymentMethods extends AppCompatActivity {
             }
         });
 
+        tiktaktoe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                processtiktatoe();
+            }
+        });
+
+
+    }
+
+    private void processtiktatoe() {
+        Intent intent = new Intent(this, TikTakToe.class);
+        startActivity(intent);
+    }
+
+    private void processSignOut() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void website(String url) {
@@ -104,31 +133,29 @@ public class PaymentMethods extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode==PAYPAL_REQUEST_CODE)
-        {
-            if (resultCode == RESULT_OK)
-            {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PAYPAL_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
                 PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-                if (confirmation != null)
-                {
+                if (confirmation != null) {
                     try {
                         String paymentDetails = confirmation.toJSONObject().toString(4);
 
                         startActivity(new Intent(this, PayPalPaymentDetails.class)
-                                .putExtra("PaymentDetails",paymentDetails)
-                                .putExtra("PaymentAmount",amount)
+                                .putExtra("PaymentDetails", paymentDetails)
+                                .putExtra("PaymentAmount", amount)
 
                         );
-                    }catch (JSONException e){
+                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
                 }
-            }else if (resultCode == Activity.RESULT_CANCELED)
-                Toast.makeText(this,"Cancel",Toast.LENGTH_SHORT).show();
+            } else if (resultCode == Activity.RESULT_CANCELED)
+                Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
 
-        }else if (resultCode==PaymentActivity.RESULT_EXTRAS_INVALID)
-            Toast.makeText(this,"Invalid",Toast.LENGTH_SHORT).show();
+        } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
+            Toast.makeText(this, "Invalid", Toast.LENGTH_SHORT).show();
 
     }
 }

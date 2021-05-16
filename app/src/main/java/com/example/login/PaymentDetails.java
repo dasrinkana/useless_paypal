@@ -37,7 +37,7 @@ public class PaymentDetails extends AppCompatActivity {
     private void showDetails(JSONObject response, String paymentAmount) throws JSONException {
         try {
             txtId.setText(response.getString("id"));
-            txtStatus.setText(response.getString("id"));
+            txtStatus.setText(response.getString("state"));
             txtAmount.setText("$"+paymentAmount);
         }catch (JSONException e){
             e.printStackTrace();

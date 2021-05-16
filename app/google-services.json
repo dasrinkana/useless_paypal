@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1036705753500",
+    "project_id": "useless-studio",
+    "storage_bucket": "useless-studio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036705753500:android:5b970065de11c2c5814059",
+        "android_client_info": {
+          "package_name": "com.example.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036705753500-flhfn2tc7k4b5e941h75r2aladb74s1t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQa-pluMibIvoLABFg-ivjQEaQawtX_3M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036705753500-flhfn2tc7k4b5e941h75r2aladb74s1t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
